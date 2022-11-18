@@ -1,1 +1,3 @@
-one/digitalinnovation/cloudparking/CloudParkingApplicationTests.class
+one/digitalinnovation/cloudparking/controller/AbstractContainerBase.class
+one/digitalinnovation/cloudparking/service/ParkingCheckOutTest.class
+one/digitalinnovation/cloudparking/controller/ParkingControllerTest.class

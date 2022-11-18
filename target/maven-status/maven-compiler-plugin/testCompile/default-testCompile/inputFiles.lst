@@ -1,1 +1,3 @@
-/Users/Rafael/repos/Quebec-Java-Digital/DesafioProjeto-Final/dio-cloud-parking-api-project/src/test/java/one/digitalinnovation/cloudparking/CloudParkingApplicationTests.java
+/Users/Rafael/repos/Quebec-Java-Digital/DesafioProjeto-Final/dio-cloud-parking-api-project/src/test/java/one/digitalinnovation/cloudparking/controller/AbstractContainerBase.java
+/Users/Rafael/repos/Quebec-Java-Digital/DesafioProjeto-Final/dio-cloud-parking-api-project/src/test/java/one/digitalinnovation/cloudparking/controller/ParkingControllerTest.java
+/Users/Rafael/repos/Quebec-Java-Digital/DesafioProjeto-Final/dio-cloud-parking-api-project/src/test/java/one/digitalinnovation/cloudparking/service/ParkingCheckOutTest.java

@@ -1,2 +1,12 @@
+one/digitalinnovation/cloudparking/controller/dto/ParkingCreateDTO.class
+one/digitalinnovation/cloudparking/controller/dto/ParkingDTO.class
 one/digitalinnovation/cloudparking/controller/HelloController.class
+one/digitalinnovation/cloudparking/service/ParkingService.class
+one/digitalinnovation/cloudparking/config/SwaggerConfig.class
+one/digitalinnovation/cloudparking/controller/mapper/ParkingMapper.class
+one/digitalinnovation/cloudparking/service/ParkingCheckOut.class
+one/digitalinnovation/cloudparking/exception/ParkingNotFoundException.class
+one/digitalinnovation/cloudparking/controller/ParkingController.class
 one/digitalinnovation/cloudparking/CloudParkingApplication.class
+one/digitalinnovation/cloudparking/model/Parking.class
+one/digitalinnovation/cloudparking/repository/ParkingRepository.class
