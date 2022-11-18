@@ -12,7 +12,7 @@ public class ParkingService {
 
     private static Map<String, Parking> parkingMap = new HashMap();
 
-    static {
+/*    static {
         var id = getUUID();
         var id1 = getUUID();
         var id2 = getUUID();
@@ -25,7 +25,7 @@ public class ParkingService {
         parkingMap.put(id1, parking1);
         parkingMap.put(id2, parking2);
         parkingMap.put(id3, parking3);
-    }
+    }*/
 
     public List<Parking> findAll(){
         return parkingMap.values().stream().collect(Collectors.toList());
@@ -45,5 +45,25 @@ public class ParkingService {
         parkingCreate.setEntryDate(LocalDateTime.now());
         parkingMap.put(uuid, parkingCreate);
         return parkingCreate;
+    }
+
+    public void delete(String id) {
+        findById(id);
+        parkingMap.remove(id);
+    }
+
+    public Parking update(String id, Parking parkingCreate) {
+        Parking parking = findById(id);
+        parking.setColor(parkingCreate.getColor());
+        parkingMap.replace(id, parking);
+        return parking;
+    }
+
+    public Parking exit(String id) {
+        //recuperar o estacionado
+        //atualizar data de saida
+        //calcular valor
+        //retornar data de saida e valor a pagar
+        return null;
     }
 }

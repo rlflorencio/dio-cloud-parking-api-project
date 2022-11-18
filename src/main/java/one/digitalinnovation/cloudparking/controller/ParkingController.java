@@ -2,6 +2,7 @@ package one.digitalinnovation.cloudparking.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import one.digitalinnovation.cloudparking.controller.exception.ParkingNotFoundException;
 import one.digitalinnovation.cloudparking.dto.ParkingCreateDTO;
 import one.digitalinnovation.cloudparking.dto.ParkingDTO;
 import one.digitalinnovation.cloudparking.mapper.ParkingMapper;
@@ -42,6 +43,13 @@ public class ParkingController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{id}")
+    @ApiOperation("Delete Parking by Id")
+    public ResponseEntity delete(@PathVariable String id){
+        parkingService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     @ApiOperation("Create Parking")
     public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto){
@@ -49,6 +57,21 @@ public class ParkingController {
         var parking = parkingService.create(parkingCreate);
         var result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @PutMapping("/{id}")
+    @ApiOperation("Update Parking")
+    public ResponseEntity<ParkingDTO> update(@PathVariable String id, @RequestBody ParkingCreateDTO parkingCreateDTO){
+        Parking parkingUpdate = parkingMapper.toParkingCreate(parkingCreateDTO);
+        Parking parking = parkingService.update(id, parkingUpdate);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
+    }
+
+    @PostMapping("/{id}")
+    @ApiOperation("Exit Parking")
+    public ResponseEntity<ParkingDTO> exit(@PathVariable String id){
+        Parking parking = parkingService.exit(id);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
     }
 
 }
