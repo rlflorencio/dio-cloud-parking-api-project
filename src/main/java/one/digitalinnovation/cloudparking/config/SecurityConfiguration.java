@@ -20,8 +20,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user")
-                .password(passwordEncoder().encode("123"))
-                .roles("USER");
+                .password(passwordEncoder().encode("Teste@123"))
+                .roles("USER")
+                .and()
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -35,13 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(SWAGGER_WHITELIST).permitAll()
-                .antMatchers(HttpMethod.GET, "/parking").permitAll()
-                .antMatchers(HttpMethod.POST, "/parking").hasAnyRole("USERS")
-                .antMatchers(HttpMethod.GET, "/parking/*").permitAll()
-                .antMatchers(HttpMethod.PUT, "/parking/*").hasAnyRole("USERS")
-                .antMatchers(HttpMethod.POST, "/parking/*").hasAnyRole("USERS")
-                .antMatchers(HttpMethod.DELETE, "/parking/*").hasAnyRole("USERS")
                 .anyRequest().authenticated()
+                .and().httpBasic()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
