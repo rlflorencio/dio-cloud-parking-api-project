@@ -10,6 +10,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import static io.restassured.RestAssured.given;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ParkingControllerTest extends AbstractContainerBase{
 
@@ -18,13 +20,12 @@ class ParkingControllerTest extends AbstractContainerBase{
 
     @BeforeEach
     public void setUpTest(){
-        System.out.println(randomPort);
         RestAssured.port = randomPort;
     }
 
     @Test
     void whenFindAllThenCheckResult() {
-        RestAssured.given()
+        given()
                 .auth()
                 .basic("user", "Teste@123")
                 .when()
@@ -41,7 +42,7 @@ class ParkingControllerTest extends AbstractContainerBase{
         createDTO.setLicense("RLF-0000");
         createDTO.setModel("PORSCHE 911 TURBO S");
         createDTO.setState("PE");
-        RestAssured.given()
+        given()
                 .auth()
                 .basic("user", "Teste@123")
                 .when()
@@ -50,6 +51,10 @@ class ParkingControllerTest extends AbstractContainerBase{
                 .post("/parking")
                 .then()
                 .statusCode(HttpStatus.CREATED.value())
-                .body("license", Matchers.equalTo("RLF-0000"));
+                .body("license", Matchers.equalTo("RLF-0000"))
+                .body("color", Matchers.equalTo("ROXO"))
+                .body("model", Matchers.equalTo("PORSCHE 911 TURBO S"))
+                .body("state", Matchers.equalTo("PE"));
     }
+
 }
